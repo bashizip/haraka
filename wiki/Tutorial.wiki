@@ -3,6 +3,4 @@
 
 
 
-go to http://stackoverflow.com/haraka
-
-
+go to http://stackoverflow.com/questions/3352444/how-to-use-haraka-librairy
