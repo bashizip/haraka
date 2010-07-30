@@ -58,7 +58,7 @@ public class Main {
     }
 
     static void update(int id) {
-        Categorie cu = new Categorie(1, "Electrique dcd", new java.sql.Date(System.currentTimeMillis()));
+        Categorie cu = new Categorie(id, "Electrique dcd", new java.sql.Date(System.currentTimeMillis()));
         try {
             cu.update();
             cm.commit();
