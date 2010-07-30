@@ -2,7 +2,7 @@
 #labels Phase-Support,Phase-QA,Phase-Deploy
 = Example de code  =
 
-==Après avoir généré du code grâce à l'outil en ligne de commande, vous pouvez utiliser ==haraka R2O tool de cette façon:
+Après avoir généré du code grâce à l'outil en ligne de commande, vous pouvez utiliser haraka R2O tool de cette façon:
 
 
 
