@@ -1,19 +1,5 @@
-#summary Voici un example de code utilisant R20 pour illustrer les opérations CRUD
 #labels Phase-Support,Phase-QA,Featured
-= Example de code  =
-
-Après avoir généré du code grâce à l'outil en ligne de commande, vous pouvez utiliser haraka R2O tool de cette façon:
-
-
-
-
-
 {{{
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package testr20;
 
 import com.pbash.r2o.dataAccess.ConnectionManager;
@@ -28,46 +14,47 @@ public class Main {
 
     static ConnectionManager cm = ConnectionManager.getInstance();
     static Categorie helper = new Categorie();
-    
-   //create
-    static void create(int id) {
 
-     
+    //create
+    static void create(int id) {
         Categorie cat = new Categorie(id, "Viande", new java.sql.Date(System.currentTimeMillis()));
         try {
             cat.create();
 
             cm.commit();
         } catch (Exception e) {
+            cm.rollback();
             e.printStackTrace();
         }
     }
     //read
+
     static void read(String key) {
-
-
         try {
             helper.read(key);
             cm.commit();
             System.out.println(helper.getIdcategorie() + "\n" + helper.getNom() + "\n" + helper.getDate_creation());
         } catch (Exception e) {
+              cm.rollback();
             e.printStackTrace();
         }
 
 
     }
 
+    //update
     static void update(int id) {
         Categorie cu = new Categorie(id, "Electrique dcd", new java.sql.Date(System.currentTimeMillis()));
         try {
             cu.update();
             cm.commit();
         } catch (Exception e) {
+            cm.rollback();
             e.printStackTrace();
         }
 
     }
-
+//delete
     static void delete(String id) {
         Categorie cdel = new Categorie();
         try {
@@ -78,7 +65,7 @@ public class Main {
         }
 
     }
-
+//read all
     static void readAll() {
 
         try {
@@ -90,22 +77,14 @@ public class Main {
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
+              cm.rollback();
         }
 
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-//      for(int i=0;i<10;i++){
-//          create(i);
-//      }
-        readAll();
+        readAll();   //a vous d'essayer les autres methodes
     }
 }
-
-
-
-
 }}}
