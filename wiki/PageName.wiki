@@ -1,8 +1,107 @@
 #summary One-sentence summary of this page.
 
-= Introduction =
+= Example de code  =
+{{{
 
-_test_
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package testr20;
+
+import com.pbash.r2o.dataAccess.ConnectionManager;
+import com.pbash.r2o.dataAccess.DataObject;
+import gen.Categorie;
+
+/**
+ *
+ * @author bashizip
+ */
+public class Main {
+
+    static ConnectionManager cm = ConnectionManager.getInstance();
+    static Categorie helper = new Categorie();
+    
+   //create
+    static void create(int id) {
+
+     
+        Categorie cat = new Categorie(id, "Viande", new java.sql.Date(System.currentTimeMillis()));
+        try {
+            cat.create();
+
+            cm.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //read
+    static void read(String key) {
+
+
+        try {
+            helper.read(key);
+            cm.commit();
+            System.out.println(helper.getIdcategorie() + "\n" + helper.getNom() + "\n" + helper.getDate_creation());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    static void update(int id) {
+        Categorie cu = new Categorie(1, "Electrique dcd", new java.sql.Date(System.currentTimeMillis()));
+        try {
+            cu.update();
+            cm.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    static void delete(String id) {
+        Categorie cdel = new Categorie();
+        try {
+            cdel.delete(id);
+            cm.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    static void readAll() {
+
+        try {
+            for (DataObject dao : helper.getAll()) {
+                Categorie c = (Categorie) dao;
+                System.out.println(c.getNom());
+                for (DataObject C : helper.getAll()) {
+                    cm.commit();
+                }
+            }
+        } catch (Exception e) {
+        }
+
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+//      for(int i=0;i<10;i++){
+//          create(i);
+//      }
+        readAll();
+    }
+}
+
+
+
+
+}}}
 
 
 = Details =
