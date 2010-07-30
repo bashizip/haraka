@@ -1,4 +1,4 @@
-#summary Voici un example de code utilisant R20 pour illustrer les opéraions CRUD
+#summary Voici un example de code utilisant R20 pour illustrer les opérations CRUD
 #labels Phase-Support,Phase-QA,Featured
 = Example de code  =
 
